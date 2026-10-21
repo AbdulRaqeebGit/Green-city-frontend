@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login · Green City ☘</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <!-- External CSS (path adjusted for /pages folder) -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../fav.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="signup-card">
+        <div class="row g-0">
+            <!-- LEFT SIDE – LOGIN FORM -->
+            <div class="col-md-6 col-lg-7 signup-left order-1 order-md-1">
+                <div class="inner">
+                    <!-- small mobile-only brand hint -->
+                    <div class="d-md-none mb-4 text-center">
+                        <span class="badge px-3 py-2" style="background: var(--brand-light); color: var(--brand-dark); font-weight: 500; border-radius: 2rem;">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Welcome to Green City
+                        </span>
+                    </div>
+
+                    <h1 class="welcome-heading">Welcome back</h1>
+                    <p class="welcome-sub">Log in to continue to your account.</p>
+
+                    <form>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="john@example.com" autocomplete="email">
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="current-password">
+                        </div>
+
+                        <!-- Remember + Forgot -->
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <div class="d-flex align-items-start">
+                                <input class="form-check-input me-2" type="checkbox" id="rememberCheck">
+                                <label class="form-check-label" for="rememberCheck">Remember me</label>
+                            </div>
+                            <a href="#" class="login-link" style="font-size: 0.9rem;">Forgot password?</a>
+                        </div>
+
+                        <!-- Login button -->
+                        <button type="submit" class="btn-signup mb-3">
+                            Log in <i class="bi bi-arrow-right-short ms-1"></i>
+                        </button>
+
+                        <!-- Continue as Guest -->
+                        <a href="./dashboard.html" class="btn btn-outline-secondary w-100 mb-3" style="border-radius: 1rem; padding: 0.8rem 1.5rem; font-weight: 500; border-color: #e2e8f0; color: #475569;">
+                            <i class="bi bi-person me-1"></i> Continue as Guest
+                        </a>
+
+                        <!-- Signup link -->
+                        <p class="text-center text-muted-custom mt-3 mb-0">
+                            Don't have an account?
+                            <a href="../index.html" class="login-link">Sign up</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE – BRAND / GREEN AREA -->
+            <div class="col-md-6 col-lg-5 signup-right order-2 order-md-2">
+                <!-- Brand name -->
+                <div class="brand-name">Green City <span class="leaf">☘</span></div>
+
+                <i class="bi bi-shield-lock-fill brand-icon"></i>
+                <div class="brand-title">Good to see you again</div>
+                <p class="brand-sub">
+                    Log in to pick up right where you left off. Your data is safe with us.
+                </p>
+
+                <!-- subtle social proof -->
+                <div class="mt-4 d-flex gap-3 justify-content-center">
+                    <span class="badge rounded-pill bg-white bg-opacity-10 px-3 py-2" style="backdrop-filter: blur(4px);">
+                        <i class="bi bi-shield-check me-1" style="color: #fff;"></i> Secure
+                    </span>
+                    <span class="badge rounded-pill bg-white bg-opacity-10 px-3 py-2">
+                        <i class="bi bi-lightning-charge-fill me-1"></i> Fast
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

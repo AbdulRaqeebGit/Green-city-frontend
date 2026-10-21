@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup · Green City ☘</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="./fav.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="signup-card">
+        <div class="row g-0">
+            <!-- LEFT SIDE – SIGNUP FORM -->
+            <div class="col-md-6 col-lg-7 signup-left order-1 order-md-1">
+                <div class="inner">
+                    <!-- small mobile-only brand hint -->
+                    <div class="d-md-none mb-4 text-center">
+                        <span class="badge px-3 py-2" style="background: var(--brand-light); color: var(--brand-dark); font-weight: 500; border-radius: 2rem;">
+                            <i class="bi bi-person-plus-fill me-1"></i> Join Green City
+                        </span>
+                    </div>
+
+                    <h1 class="welcome-heading">Create account</h1>
+                    <p class="welcome-sub">Get started with your free account.</p>
+
+                    <form>
+                        <!-- Full name -->
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="John Carter" autocomplete="name">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="john@example.com" autocomplete="email">
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Create a strong password" autocomplete="new-password">
+                        </div>
+
+                        <!-- Terms checkbox -->
+                        <div class="mb-4 d-flex align-items-start">
+                            <input class="form-check-input me-2" type="checkbox" id="termsCheck" checked>
+                            <label class="form-check-label" for="termsCheck">
+                                I agree to the <a href="#" class="login-link" style="font-weight: 500;">Terms &amp; Privacy</a>
+                            </label>
+                        </div>
+
+                        <!-- Signup button -->
+                        <button type="submit" class="btn-signup mb-3">
+                            Sign up <i class="bi bi-arrow-right-short ms-1"></i>
+                        </button>
+
+                        <!-- Continue as Guest -->
+                        <a href="./pages/dashboard.html" class="btn btn-outline-secondary w-100 mb-3" style="border-radius: 1rem; padding: 0.8rem 1.5rem; font-weight: 500; border-color: #e2e8f0; color: #475569;">
+                            <i class="bi bi-person me-1"></i> Continue as Guest
+                        </a>
+
+                        <!-- Login link -->
+                        <p class="text-center text-muted-custom mt-3 mb-0">
+                            Already have an account?
+                            <a href="pages/login.html" class="login-link">Log in</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <!-- RIGHT SIDE – BRAND / GREEN AREA -->
+            <div class="col-md-6 col-lg-5 signup-right order-2 order-md-2">
+                <!-- Brand name -->
+                <div class="brand-name">Green City <span class="leaf">☘</span></div>
+
+                <i class="bi bi-hexagon-fill brand-icon"></i>
+                <div class="brand-title">Start your journey</div>
+                <p class="brand-sub">
+                    Join thousands of users who trust our platform. It's free and always will be.
+                </p>
+
+                <!-- subtle social proof -->
+                <div class="mt-4 d-flex gap-3 justify-content-center">
+                    <span class="badge rounded-pill bg-white bg-opacity-10 px-3 py-2" style="backdrop-filter: blur(4px);">
+                        <i class="bi bi-star-fill me-1" style="color: #fff;"></i> 4.9/5
+                    </span>
+                    <span class="badge rounded-pill bg-white bg-opacity-10 px-3 py-2">
+                        <i class="bi bi-people-fill me-1"></i> 10k+
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
