@@ -59,7 +59,7 @@
          ============================================ -->
     <section id="home" class="dashboard-section dashboard-home">
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4 g-lg-5">
                 <div class="col-lg-6" data-animate="fade-up">
                     <span class="dashboard-badge">
                         <i class="bi bi-flower1 me-1"></i> Welcome to Green City
@@ -70,7 +70,7 @@
                     <p class="dashboard-hero-sub">
                         Discover a curated collection of beautiful, easy-to-care-for plants. We help you turn any space into a green sanctuary — one plant at a time.
                     </p>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
+                    <div class="dashboard-hero-actions">
                         <a href="#services" class="btn-signup dashboard-cta">
                             Explore Plants <i class="bi bi-arrow-right-short ms-1"></i>
                         </a>
@@ -78,7 +78,7 @@
                             Learn More
                         </a>
                     </div>
-                    <div class="d-flex flex-wrap gap-4 mt-5">
+                    <div class="dashboard-stats">
                         <div class="dashboard-stat">
                             <h3>500+</h3>
                             <p>Plant varieties</p>
@@ -438,23 +438,55 @@
 
     <!-- DASHBOARD JS -->
     <script>
+        const navbar = document.getElementById('mainNavbar');
+        const navMenu = document.getElementById('navMenu');
+
+        // Height of the closed navbar header – measured before the mobile
+        // menu can expand it, so in-page links land exactly under the bar.
+        let navbarOffset = navbar ? navbar.offsetHeight : 0;
+
+        window.addEventListener('resize', () => {
+            if (!navMenu || !navMenu.classList.contains('show')) {
+                navbarOffset = navbar ? navbar.offsetHeight : 0;
+            }
+        });
+
+        function scrollToTarget(target) {
+            const top = target.getBoundingClientRect().top + window.pageYOffset - (navbarOffset + 12);
+            window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+        }
+
+        function closeMobileMenu() {
+            if (window.bootstrap && navMenu && navMenu.classList.contains('show')) {
+                bootstrap.Collapse.getOrCreateInstance(navMenu).hide();
+            }
+        }
+
+        // Fonts can change the header height after first paint
+        window.addEventListener('load', () => {
+            if (!navMenu || !navMenu.classList.contains('show')) {
+                navbarOffset = navbar ? navbar.offsetHeight : 0;
+            }
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                if (!targetId || targetId === '#') return;
                 const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    const offset = 80;
-                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
+                if (!target) return;
 
-                    const navbarCollapse = document.getElementById('navMenu');
-                    if (navbarCollapse.classList.contains('show')) {
-                        new bootstrap.Collapse(navbarCollapse).hide();
-                    }
-                }
+                e.preventDefault();
+                closeMobileMenu();
+                scrollToTarget(target);
             });
+        });
+
+        // Tapping outside the open mobile menu closes it
+        document.addEventListener('click', (e) => {
+            if (navMenu && navMenu.classList.contains('show') && !e.target.closest('#mainNavbar')) {
+                closeMobileMenu();
+            }
         });
 
         const sections = document.querySelectorAll('section[id]');
@@ -478,35 +510,39 @@
             });
         }
 
-        window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('scroll', setActiveLink, { passive: true });
         window.addEventListener('load', setActiveLink);
 
-        const navbar = document.getElementById('mainNavbar');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 20) {
                 navbar.classList.add('navbar-scrolled');
             } else {
                 navbar.classList.remove('navbar-scrolled');
             }
-        });
+        }, { passive: true });
 
         const animateEls = document.querySelectorAll('[data-animate]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = entry.target.dataset.delay || 0;
-                    setTimeout(() => {
-                        entry.target.classList.add('animated');
-                    }, delay);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
 
-        animateEls.forEach(el => {
-            el.classList.add('animate-init');
-            observer.observe(el);
-        });
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            animateEls.forEach(el => {
+                el.classList.add('animate-init');
+                observer.observe(el);
+            });
+        } else {
+            animateEls.forEach(el => el.classList.add('animated'));
+        }
     </script>
 
 </body>
