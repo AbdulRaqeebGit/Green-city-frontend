@@ -717,49 +717,36 @@ body.dashboard-body {
 /* ---- HERO VISUAL ---- */
 .dashboard-hero-visual {
   position: relative;
-  height: 360px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.dashboard-hero-circle {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(40, 203, 139, 0.15), rgba(40, 203, 139, 0.03));
-  border: 1.5px dashed rgba(40, 203, 139, 0.3);
-  animation: floatIcon 6s ease-in-out infinite;
+.dashboard-hero-photo {
+  width: 100%;
+  max-width: 540px;
+  height: 420px;
+  object-fit: cover;
+  object-position: left center;
+  border-radius: 2rem;
+  box-shadow: 0 28px 60px -24px rgba(15, 23, 42, 0.35);
+  border: 6px solid #ffffff;
 }
 
-.dashboard-hero-icon {
-  font-size: 8rem;
-  color: var(--brand);
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 20px 40px rgba(40, 203, 139, 0.25));
-  animation: floatIcon 4s ease-in-out infinite;
-}
-
-.dashboard-hero-icon-2 {
+.dashboard-hero-chip {
   position: absolute;
-  top: 20%;
-  left: 15%;
-  font-size: 2rem;
-  color: var(--brand);
-  opacity: 0.5;
-  animation: floatIcon 5s ease-in-out 0.5s infinite;
-}
-
-.dashboard-hero-icon-3 {
-  position: absolute;
-  bottom: 20%;
-  right: 15%;
-  font-size: 2.5rem;
-  color: var(--brand);
-  opacity: 0.4;
-  animation: floatIcon 4.5s ease-in-out 1s infinite;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--brand-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 2rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
 /* ---- SECTION TITLES ---- */
@@ -813,6 +800,26 @@ body.dashboard-body {
 .dashboard-about-list li i {
   color: var(--brand);
   font-size: 1.1rem;
+}
+
+.dashboard-about-visual {
+  position: relative;
+}
+
+.dashboard-about-photo {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1.75rem;
+  box-shadow: 0 22px 48px -22px rgba(15, 23, 42, 0.3);
+}
+
+.dashboard-about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .dashboard-info-card {
@@ -871,22 +878,23 @@ body.dashboard-body {
 
 .dashboard-plant-img {
   position: relative;
-  height: 170px;
-  background: linear-gradient(135deg, #e9f9f2 0%, #d4f3e6 100%);
+  height: 220px;
+  background: #eef6f1;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.dashboard-plant-img i {
-  font-size: 4rem;
-  color: var(--brand);
-  transition: transform 0.4s ease;
+.dashboard-plant-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.dashboard-plant-card:hover .dashboard-plant-img i {
-  transform: scale(1.15) rotate(-5deg);
+.dashboard-plant-card:hover .dashboard-plant-img img {
+  transform: scale(1.08);
 }
 
 .dashboard-plant-tag {
@@ -1023,17 +1031,8 @@ body.dashboard-body {
     text-align: center;
   }
 
-  .dashboard-hero-visual {
-    height: 280px;
-  }
-
-  .dashboard-hero-circle {
-    width: 220px;
-    height: 220px;
-  }
-
-  .dashboard-hero-icon {
-    font-size: 6rem;
+  .dashboard-hero-photo {
+    height: 320px;
   }
 }
 
@@ -1050,12 +1049,12 @@ body.dashboard-body {
     font-size: 1.4rem;
   }
 
-  .dashboard-hero-visual {
-    height: 220px;
+  .dashboard-hero-photo {
+    height: 260px;
   }
 
-  .dashboard-hero-icon {
-    font-size: 5rem;
+  .dashboard-about-photo {
+    height: 240px;
   }
 }
 /* ============================================
@@ -1413,17 +1412,12 @@ body.dashboard-body {
   }
 
   .dashboard-hero-visual {
-    height: 230px;
     margin-top: 0.5rem;
   }
 
-  .dashboard-hero-circle {
-    width: 210px;
-    height: 210px;
-  }
-
-  .dashboard-hero-icon {
-    font-size: 4.5rem;
+  .dashboard-hero-photo {
+    height: 240px;
+    border-radius: 1.5rem;
   }
 
   /* iOS Safari zooms the page when a focused field is under 16px */
@@ -1444,8 +1438,7 @@ body.dashboard-body {
 /* ---- Small phones ---- */
 @media (max-width: 575.98px) {
   .dashboard-hero-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
     gap: 0.6rem;
     margin-top: 1.35rem;
   }
@@ -1453,9 +1446,6 @@ body.dashboard-body {
   .dashboard-hero-actions .dashboard-cta,
   .dashboard-hero-actions .dashboard-cta-outline {
     width: 100%;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    font-size: 0.95rem;
   }
 
   .dashboard-stats {
@@ -1470,6 +1460,10 @@ body.dashboard-body {
 
   .dashboard-stat p {
     font-size: 0.78rem;
+  }
+
+  .dashboard-about-photo {
+    height: 210px;
   }
 
   .dashboard-info-card {
@@ -1491,7 +1485,7 @@ body.dashboard-body {
   }
 
   .dashboard-plant-img {
-    height: 150px;
+    height: 190px;
   }
 
   .dashboard-plant-body {
@@ -1539,11 +1533,6 @@ body.dashboard-body {
 
 /* ---- Very small phones (iPhone SE etc.) ---- */
 @media (max-width: 359.98px) {
-  .dashboard-hero-actions {
-    display: flex;
-    flex-direction: column;
-  }
-
   .dashboard-hero-title {
     font-size: 1.65rem;
   }

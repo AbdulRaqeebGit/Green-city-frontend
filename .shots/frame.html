@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #555; }
+  iframe { display: block; height: 844px; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<iframe id="f"></iframe>
+<script>
+  var p = new URLSearchParams(location.search);
+  var w = parseInt(p.get('w') || '390', 10);
+  var y = parseInt(p.get('y') || '0', 10);
+  var f = document.getElementById('f');
+  f.style.width = w + 'px';
+  f.onload = function () {
+    var win = f.contentWindow;
+    var apply = function () {
+      win.document.documentElement.style.scrollBehavior = 'auto';
+      win.document.body.style.scrollBehavior = 'auto';
+      win.scrollTo(0, y);
+    };
+    apply();
+    for (var i = 1; i <= 10; i++) setTimeout(apply, i * 200);
+    if (p.get('open')) {
+      setTimeout(function () {
+        var t = f.contentDocument.querySelector('.navbar-toggler');
+        if (t) t.click();
+      }, 400);
+    }
+    if (p.get('h')) {
+      setTimeout(function () {
+        var d = f.contentDocument;
+        var pre = document.createElement('pre');
+        pre.id = 'meta';
+        pre.textContent = 'META ' + d.documentElement.clientWidth + ' x ' + d.body.scrollHeight + ' scrollW=' + d.documentElement.scrollWidth + ' y=' + win.scrollY;
+        document.body.appendChild(pre);
+      }, 2500);
+    }
+  };
+  f.src = '../pages/dashboard.html?cachebust=' + Date.now();
+</script>
+</body>
+</html>
